@@ -1,0 +1,49 @@
+/* === Education Section === */
+.education-section {
+  margin-top: 4rem;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.education-card {
+  background: #3e2d26;
+  padding: 2rem;
+  border-radius: 1rem;
+  transition: transform 0.3s;
+  color: white;
+}
+
+.education-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.07);
+}
+
+.education-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.institution {
+  font-weight: bold;
+  color: #e0cfc2;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.edu-duration {
+  font-size: 0.85rem;
+  color: #bbb;
+  display: block;
+  margin-bottom: 0.7rem;
+}
+
+.edu-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #ddd;
+}

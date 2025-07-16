@@ -1,0 +1,215 @@
+/* src/style.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #4b372e, #1e150f);
+  color: white;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.hero button {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid #aaa;
+  background: transparent;
+  border-radius: 999px;
+  color: white;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filters button {
+  background: #3c2e2a;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  color: white;
+  cursor: pointer;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-content: center; /* <-- center single card */
+}
+.center-grid {
+  display: flex;
+  justify-content: center;
+}
+
+
+.project-card {
+  background: #2c1f1b;
+  border-radius: 1rem;
+  max-width: 500px;
+  padding: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+}
+
+.project-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-tags span {
+  background: #53423d;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+.filters button {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  margin: 0.5rem;
+  border: none;
+  background: #4b3a34;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.filters button:hover {
+  background: #6a4d45;
+}
+
+.filters .active-filter {
+  background: #f0cbaa;
+  color: #1e150f;
+  font-weight: bold;
+}
+
+.project-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.project-buttons a {
+  background: #3e2d26;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background 0.3s;
+}
+
+.project-buttons a:hover {
+  background: #61483f;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background-color: transparent;
+  color: white;
+  border: 1.5px solid #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+.download-btn:hover {
+  background-color: #ffffff10; /* subtle highlight on hover */
+  color: #f5f5f5;
+  border-color: #ddd;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* center horizontally */
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.typing-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ccc;
+  border-right: 2px solid #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+
+.download-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: transparent;
+  color: white;
+  border: 1.5px solid #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+.download-btn:hover {
+  background-color: #ffffff10;
+  color: #f5f5f5;
+  border-color: #ddd;
+}
+
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
+
+
+

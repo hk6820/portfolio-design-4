@@ -1,0 +1,117 @@
+.experience-hover-section {
+  margin-top: 4rem;
+}
+
+.experience-hover-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  perspective: 1000px;
+}
+
+.experience-hover-card {
+  width: 100%;
+  height: 240px;
+  perspective: 1000px;
+  position: relative;
+}
+
+.experience-hover-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  border-radius: 1rem;
+}
+
+/* Flip behavior on hover (desktop) */
+.experience-hover-card:hover .experience-hover-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Flip class for mobile (JS controlled) */
+.experience-hover-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  backface-visibility: hidden;
+  display: block; /* instead of flex */
+  box-sizing: border-box;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+.card-front {
+  background: #3e2d26;
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-front h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.company {
+  color: #e0cfc2;
+  font-weight: 600;
+}
+
+.duration {
+  font-size: 0.85rem;
+  color: #bbb;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .experience-hover-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .experience-hover-card {
+    height: 200px;
+  }
+
+  .card-front,
+  .card-back {
+    padding: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .card-front h3 {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .duration {
+    font-size: 0.8rem;
+  }
+}
