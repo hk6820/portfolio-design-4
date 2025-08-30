@@ -1,4 +1,4 @@
-// Import required components and assets
+// Import required components and configuration
 import Navbar from './components/Navbar';
 import About from './pages/About';
 import WhatIDo from './pages/WhatIDo';
@@ -8,182 +8,103 @@ import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Blog from './pages/Blog';
 
-import project1 from './assets/project1.png';
-import project2 from './assets/project2.png';
-import project3 from './assets/project3.png';
-import authorImg from './assets/design4photo1.png';
-import profileImg from './assets/project2.png';
-import resume from './assets/Resume.pdf';
-
-// Import icons for "What I Do" section
-import { FaCode, FaPaintBrush, FaRocket } from 'react-icons/fa';
+// Import dynamic configuration
+import { portfolioConfig } from './config/portfolioConfig';
 
 // Import global animation styles
 import './components/Animation.css';
 
 function App() {
-
-  // 👇 Services offered - shown in "What I Do" section
-  const services = [
-    {
-      icon: <FaCode />,
-      title: 'Frontend Development',
-      description: 'Building responsive and accessible web interfaces using React, HTML, and CSS.',
-    },
-    {
-      icon: <FaPaintBrush />,
-      title: 'UI/UX Design',
-      description: 'Designing user-centric interfaces that are both intuitive and aesthetically pleasing.',
-    },
-    {
-      icon: <FaRocket />,
-      title: 'Performance Optimization',
-      description: 'Improving load times and performance for a smooth user experience.',
-    },
-  ];
-
-  // 👇 Navigation links - used in Navbar
-  const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'whatido', label: 'What I Do' },
-    { id: 'blog', label: 'Blog' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'education', label: 'Education' },
-    { id: 'contact', label: 'Contact' },
-  ];
-
-  // 👇 Work experience data - shown in Experience section
-  const experienceData = [
-    {
-      role: 'Frontend Developer',
-      company: 'Tech Solutions Inc.',
-      duration: 'Jan 2022 – Present',
-      description: 'Worked on React components and improved UX through collaboration with design teams.',
-    },
-    {
-      role: 'Web Developer Intern',
-      company: 'Creative Web Studio',
-      duration: 'Jun 2021 – Dec 2021',
-      description: 'Created landing pages and learned core development practices.',
-    },
-  ];
-
-  // 👇 Education history - shown in Education section
-  const educationList = [
-    {
-      degree: 'Bachelor of Computer Applications',
-      institution: 'ABC University',
-      duration: '2018 – 2021',
-      description: 'Studied web dev, software engineering, and data structures.',
-    },
-    {
-      degree: 'Higher Secondary Education',
-      institution: 'XYZ Higher Secondary School',
-      duration: '2016 – 2018',
-      description: 'Science stream focused on Math and Computer Science.',
-    },
-  ];
-
-  // 👇 Project portfolio items - shown in Home section
-  const projectList = [
-    {
-      title: 'E-commerce Website',
-      tags: ['React', 'TypeScript'],
-      image: project1,
-      previewLink: 'https://example.com/ecommerce',
-      githubLink: 'https://github.com/your/ecommerce',
-    },
-    {
-      title: 'Chat Application',
-      tags: ['React', 'Firebase'],
-      image: project2,
-      previewLink: 'https://example.com/chat',
-      githubLink: 'https://github.com/your/chat',
-    },
-    {
-      title: 'Task Management App',
-      tags: ['UI', 'Next.js'],
-      image: project3,
-      previewLink: 'https://example.com/task',
-      githubLink: 'https://github.com/your/task',
-    }
-  ];
-
-  // 👇 Filter options for projects (used in Home section)
-  const filters = ['All', 'React', 'UI', 'Fullstack'];
+  // Extract data from configuration
+  const { personal, navigation, about, services, experience, education, projects, projectFilters, blog, contact } = portfolioConfig;
+  
+  // Filter enabled navigation links
+  const enabledNavLinks = navigation.filter(link => link.enabled);
 
   return (
-    // 👇 Background color and layout styling
     <div className="min-h-screen bg-gradient-to-br from-[#4b372e] via-[#2d211b] to-[#1e150f] text-white">
 
-      {/* 👇 Navbar component with site title and links */}
-      <Navbar brandName="John Doe" navLinks={navLinks} />
+      {/* 👇 Navbar component with dynamic brand name and links */}
+      <Navbar brandName={personal.name} navLinks={enabledNavLinks} />
 
       {/* 👇 Main page content starts here */}
       <main className="py-10">
 
-        {/* 👇 Hero section with animated subtitle and project filtering */}
-        <Home
-          id="home"
-          name="John Doe"
-          title="Portfolio"
-          subtitle="I am a web developer"
-          resumeLink={resume}
-          projects={projectList}
-          filters={filters}
-        />
+        {/* 👇 Hero section with dynamic data */}
+        {enabledNavLinks.find(link => link.id === 'home') && (
+          <Home
+            id="home"
+            name={personal.name}
+            title={personal.title}
+            subtitle={personal.subtitle}
+            resumeLink={personal.resumeLink}
+            projects={projects}
+            filters={projectFilters}
+          />
+        )}
 
-        {/* 👇 About section with profile image and description */}
-        <About
-          id="about"
-          title="About Me"
-          description="Hello! I'm John Doe, a frontend developer with a passion for beautiful UIs and clean code."
-          subDescription="I love turning complex problems into simple, elegant solutions. Currently diving deeper into React and design systems."
-          image={profileImg}
-        />
+        {/* 👇 About section with dynamic data */}
+        {enabledNavLinks.find(link => link.id === 'about') && (
+          <About
+            id="about"
+            title={about.title}
+            description={about.description}
+            subDescription={about.subDescription}
+            image={about.image}
+          />
+        )}
 
         {/* 👇 Services section: What I Do */}
-        <WhatIDo
-          id="whatido"
-          title="What I Do"
-          services={services}
-        />
+        {enabledNavLinks.find(link => link.id === 'whatido') && (
+          <WhatIDo
+            id="whatido"
+            title="What I Do"
+            services={services}
+          />
+        )}
 
         {/* 👇 Work experience section */}
-        <Experience
-          id="experience"
-          title="Experience"
-          experiences={experienceData}
-        />
-
-        {/* 👇 Blog preview section with author info */}
-        <Blog
-          id="blog"
-          name="Lilon Macwan"
-          role="Web Designer"
-          location="USA"
-          description="I write about design, UX, frontend tools, and creative projects I work on."
-          image={authorImg}
-          buttonText="Explore My Blog"
-          buttonLink="/blog"
-        />
+        {enabledNavLinks.find(link => link.id === 'experience') && (
+          <Experience
+            id="experience"
+            title="Experience"
+            experiences={experience}
+          />
+        )}
 
         {/* 👇 Education history section */}
-        <Education
-          id="education"
-          title="Education"
-          educationList={educationList}
-        />
+        {enabledNavLinks.find(link => link.id === 'education') && (
+          <Education
+            id="education"
+            title="Education"
+            educationList={education}
+          />
+        )}
 
-        {/* 👇 Contact section with form and contact details */}
-        <Contact
-          id="contact"
-          title="Contact Me"
-          subtitle="I'm open to freelance work, collaborations, and new opportunities."
-          email="youremail@example.com"
-          location="New Delhi, India"
-        />
+        {/* 👇 Blog preview section with dynamic data */}
+        {enabledNavLinks.find(link => link.id === 'blog') && (
+          <Blog
+            id="blog"
+            name={blog.name}
+            role={blog.role}
+            location={blog.location}
+            description={blog.description}
+            image={blog.image}
+            buttonText={blog.buttonText}
+            buttonLink={blog.buttonLink}
+          />
+        )}
+
+        {/* 👇 Contact section with dynamic data */}
+        {enabledNavLinks.find(link => link.id === 'contact') && (
+          <Contact
+            id="contact"
+            title={contact.title}
+            subtitle={contact.subtitle}
+            email={contact.email}
+            location={contact.location}
+          />
+        )}
       </main>
     </div>
   );
